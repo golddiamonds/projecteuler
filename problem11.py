@@ -26,23 +26,89 @@ for num in grid_split:
 		j += 1
 	i += 1
 
-print grid_int
 
-m = 20
-n = 20
-#largest product up
+m = 0
+n = 0
+prod_four_up_greatest = 0
+prod_four_up = 0
+print 'vertical'
+#largest product up/down
 while n < 20:
 	while m < 17:
-		
+		print grid_int[m][n] , grid_int[m+1][n] , grid_int[m+2][n] , grid_int[m+3][n]
+		prod_four_up = int(grid_int[m][n] * grid_int[m+1][n] * grid_int[m+2][n] * grid_int[m+3][n])
+		print prod_four_up
+		print prod_four_up_greatest
+		#print prod_four_up
 		m += 1
+		if int(prod_four_up) > int(prod_four_up_greatest):
+			prod_four_up_greatest = prod_four_up
+	m = 0
 	n += 1
+	
+print prod_four_up_greatest
 
+print 'across'
+#largest product left/right
+m = 0
+n = 0
+prod_four_left_greatest = 0
+prod_four_left = 0
+while m < 20:
+	while n < 17:
+		print grid_int[m][n], grid_int[m][n+1] , grid_int[m][n+2] , grid_int[m][n+3]
+		prod_four_left = int(grid_int[m][n] * grid_int[m][n+1] * grid_int[m][n+2] * grid_int[m][n+3])
+		print prod_four_left
+		n += 1
+		if prod_four_left > prod_four_left_greatest:
+			print prod_four_left_greatest
+			prod_four_left_greatest = prod_four_left
+			print 'BIGGER'
+	n = 0
+	m += 1
 
+print prod_four_left_greatest
 
-#largest product down
+print 'diagonal right'
+#largest product diagonally to right
+m = 0
+n = 0
+prod_four_diag_greatest = 0
+prod_four_diag = 0
+while m < 17:
+	while n < 17:
+		print grid_int[m][n] , grid_int[m+1][n+1] , grid_int[m+2][n+2] , grid_int[m+3][n+3]
+		prod_four_diag = int(grid_int[m][n] * grid_int[m+1][n+1] * grid_int[m+2][n+2] * grid_int[m+3][n+3])
+		print prod_four_diag
+		n += 1
+		if prod_four_diag > prod_four_diag_greatest:
+			prod_four_diag_greatest = prod_four_diag
+	n = 0
+	m += 1
 
-#largest product left
+print prod_four_diag_greatest
 
-#largest product right
+print 'diagonal left'
+#largest product diagonally to right
+m = 3
+n = 3
+prod_four_l_diag_greatest = 0
+prod_four_diag_l = 0
+while m < 20:
+	while n < 20:
+		print grid_int[m][n] , grid_int[m-1][n-1] , grid_int[m-2][n-2] , grid_int[m-3][n-3]
+		prod_four_l_diag = int(grid_int[m-3][n] * grid_int[m-2][n-1] * grid_int[m-1][n-2] * grid_int[m][n-3])
+		print prod_four_l_diag
+		n += 1
+		if prod_four_l_diag > prod_four_l_diag_greatest:
+			prod_four_l_diag_greatest = prod_four_l_diag
+	n = 0
+	m += 1
 
-#largest product diagonally
+print prod_four_l_diag_greatest
+
+print 'RESULTS:'
+print prod_four_up_greatest
+print prod_four_left_greatest
+print prod_four_diag_greatest
+print prod_four_l_diag_greatest
