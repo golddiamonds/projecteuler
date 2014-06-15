@@ -7,24 +7,30 @@
 #3. continue until this has been done with all integers on list.
 #4. you now have a list of primes...
 
-#largest integer to test
-max_integer = 28123
+class Sieve:
+	def __init__(self, max):
+		#largest integer to test
+		self.max_integer = max
+		#list of integers to test
+		self.integer_list = []
+		self.createList()
+		self.primality()
 
-#create list of integers to test
-integer_list = []
-for i in range(2, max_integer+1):
-	integer_list.append(i)
+	def createList(self):
+		for i in range(2, self.max_integer+1):
+			self.integer_list.append(i)
 
-i = 2
-while i <= max_integer:
-	#remove all multiples of i
-	j=i+i
-	while j <= max_integer:
-		if j in integer_list:
-			integer_list.remove(j)
-		j+=i
-	i+=1
+	def primality(self):
+		i = 2
+		while i <= self.max_integer:
+			#remove all multiples of i
+			j=i+i
+			while j <= self.max_integer:
+				if j in self.integer_list:
+					self.integer_list.remove(j)
+				j+=i
+			i+=1
 
-#print out the remaining list
-#these will be all primes
-print integer_list
+if __name__ == '__main__':
+	prime_list = Sieve(28123)
+	print prime_list.integer_list
